@@ -5,6 +5,7 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
+  // left as test
   router.get("/", (req, res) => {
     knex
       .select("*")
@@ -12,6 +13,16 @@ module.exports = (knex) => {
       .then((results) => {
         res.json(results);
     });
+  });
+
+  // register user
+  router.post("/", (req, res) => {
+    
+  });
+
+  // edit user information
+  router.put("/", (req, res) => {
+    
   });
 
   return router;
