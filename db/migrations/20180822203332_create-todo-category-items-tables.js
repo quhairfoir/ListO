@@ -1,7 +1,7 @@
 
 exports.up = function(knex, Promise) {
   return Promise.all([
-    knex.schema.createTable('category', function(table) {
+    knex.schema.createTable('categories', function(table) {
       table.increments('id')
       table.string('name')
     }),
@@ -11,7 +11,7 @@ exports.up = function(knex, Promise) {
       table.integer('category_id').unsigned().notNullable()
 
       table.foreign('user_id').references('id').inTable('users')
-      table.foreign('category_id').references('id').inTable('category')
+      table.foreign('category_id').references('id').inTable('categories')
     }),
     knex.schema.createTable('items', function(table) {
       table.increments('id')
@@ -26,7 +26,7 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   return Promise.all([
-    knex.schema.dropTable('category'),
+    knex.schema.dropTable('categories'),
     knex.schema.dropTable('todos'),
     knex.schema.dropTable('items')
   ])

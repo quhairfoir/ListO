@@ -2,10 +2,13 @@ exports.seed = function(knex, Promise) {
   return knex('users').del()
     .then(function () {
       return Promise.all([
-        knex('users').insert({id: 1, name: 'Alice98', first_name: 'Alice', last_name:'Smith', email: 'allywally@gmail.com', password: 'password123'}),
-        knex('users').insert({id: 2, name: 'ReggaeBeatz', first_name: 'Bob', last_name:'Marley', Password:'whatchagunnadowhentheycome4u'}),
-        knex('category').insert({id: 1, name: 'To Read'}, {id: 2, name: 'To Buy'}, {id: 3, name: 'To Watch'}, {id: 4, name: 'To Visit'}),
-        
+        knex('users').insert({id: 1, username: 'Alice98', first_name: 'Alice', last_name:'Smith', email: 'allywally@gmail.com', password: 'password123'}),
+        knex('users').insert({id: 2, username: 'ReggaeBeatz', first_name: 'Bob', last_name:'Marley', password:'whatchagunnadowhentheycome4u'}),
+        knex('categories').insert({id: 1, name: 'To Read'}), 
+        knex('categories').insert({id: 2, name: 'To Buy'}), 
+        knex('categories').insert({id: 3, name: 'To Watch'}), 
+        knex('categories').insert({id: 4, name: 'To Visit'}),
+
         knex('todos').insert({id: 1, user_id: 1, category_id: 1, name: 'Confessions of a Shopaholic', description: 'Book'}),
         knex('todos').insert({id: 2, user_id: 1, category_id: 1, name: 'Wuthering Heights', description: 'Book'}),
         knex('todos').insert({id: 3, user_id: 1, category_id: 2, name: 'Ugg Boots', description: 'clothing'}),
@@ -22,7 +25,7 @@ exports.seed = function(knex, Promise) {
         knex('todos').insert({id: 13, user_id: 2, category_id: 3, name: 'Bojack Horseman', description: 'tv show'}),
         knex('todos').insert({id: 14, user_id: 2, category_id: 3, name: 'Dancing with the Stars', description: 'tv show'}),
         knex('todos').insert({id: 15, user_id: 2, category_id: 4, name: 'vape store', description: 'store'}),
-        knex('todos').insert({id: 16, user_id: 2, category_id: 4, name: 'bio threads', description: 'store'}),
+        knex('todos').insert({id: 16, user_id: 2, category_id: 4, name: 'bio threads', description: 'store'})
       ]);
     });
 };
