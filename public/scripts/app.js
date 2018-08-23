@@ -1,10 +1,11 @@
 $(() => {
   $.ajax({
     method: "GET",
-    url: "/api/users"
+    url: "/users"
   }).done((users) => {
+    console.log(users);
     for(user of users) {
-      $("<div>").text(users.first_name).appendTo($("body"));
+      $("<div>").text(user.first_name).appendTo($("body"));
     }
   });;
 });

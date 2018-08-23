@@ -21,7 +21,7 @@ module.exports = (knex) => {
   });
 
   // edit user information
-  router.put("/", (req, res) => {
+  router.post("/", (req, res) => {
     
   });
 

@@ -17,7 +17,9 @@ const knexLogger  = require('knex-logger');
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
-const APIRoutes = require("./routes/apiquery");
+const TODOsRoutes = require("./routes/todos");
+const APIroutes = require("./routes/apiquery");
+
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -26,6 +28,7 @@ app.use(morgan('dev'));
 
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
+
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -38,9 +41,10 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Mount all resource routes
-app.use("/api/users", usersRoutes(knex)); // NEED TO CHANGE
+app.use("/users", usersRoutes(knex)); // NEED TO CHANGE
 app.use("/auth", authRoutes(knex));
-app.use("/api/routes"), APIRoutes(knex);
+app.use("/todos", TODOsRoutes(knex));
+app.use("/api", APIroutes(knex));
 
 // Home page
 app.get("/", (req, res) => {

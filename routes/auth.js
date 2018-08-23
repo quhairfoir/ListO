@@ -9,12 +9,12 @@ module.exports = (knex) => {
 
   // login
   router.get("/", (req, res) => {
-    
+    console.log("Hello from user GET (login)");
   });
 
   // logout
-  router.delete("/", (req, res) => {
-    
+  router.post("/", (req, res) => {
+    console.log("Hello from user DELETE logout");
   });
 
   return router;

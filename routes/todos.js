@@ -8,19 +8,19 @@ const router  = express.Router();
 // code will eventually funnel querys to search through separate APIs, unsure which route currently
 module.exports = (knex) => {
 
-  // delete list item
-  router.delete("/todos/:id", (req, res) => {
-    
+   // edit list item
+   router.post("/:id", (req, res) => {
+    console.log("Hello from todos PUT");
   });
 
-  // edit list item
-  router.put("/todos/:id", (req, res) => {
-    
+  // delete list item
+  router.post("/:id/delete", (req, res) => {
+    console.log("Hello from todos DELETE");
   });
 
   // move list item to new category
-  router.post("/todos/:id/move", (req, res) => {
-    
+  router.post("/:id/move", (req, res) => {
+    console.log("Hello from todos POST");
   });
 
   return router;

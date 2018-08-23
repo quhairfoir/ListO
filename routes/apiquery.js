@@ -9,19 +9,11 @@ const router  = express.Router();
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
-    
-
-
-
-
+    console.log("Hello from api GET");
   });
 
   router.post("/", (req, res) => {
-    
-
-    
-    
-    
+    console.log("Hello from api POST");
   });
 
   return router;
