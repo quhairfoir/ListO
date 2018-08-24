@@ -8,5 +8,5 @@ $(() => {
       $("<div>").text(user.first_name).appendTo($("body"));
       }
     }
-  });;
+  );
 });
