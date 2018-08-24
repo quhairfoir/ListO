@@ -55,18 +55,24 @@ module.exports = function makeAPIHelpers() {
     toGR: function(query, cb) {
       let newEntry = {};
 
-      var options = { method: 'GET',
-        url: 'https://www.goodreads.com/search.xml',
-        qs: { key: '4UGJGjue5hYwOv5gxWCjg', q: 'Wuthering Heights' },
+      var options = {
+        method: "GET",
+        url: "https://www.goodreads.com/search.xml",
+        qs: { key: "4UGJGjue5hYwOv5gxWCjg", q: query }
       };
 
       request(options, function(error, response, body) {
         if (error) throw new Error(error);
-        console.log(body);
-        const res = convert.xml2json(body, {compact: true, spaces: 4});
-        console.log(res);
-        newEntry.name = "";
-        newEntry.description = "";
+        const res = JSON.parse(
+          convert.xml2json(body, { compact: true, spaces: 4 })
+        );
+        newEntry.name =
+          res.GoodreadsResponse.search.results.work[0].best_book.title._text +
+          ", by " +
+          res.GoodreadsResponse.search.results.work[0].best_book.author.name
+            ._text;
+        newEntry.description =
+          res.GoodreadsResponse.search.results.work[0].best_book._attributes.type;
 
         cb(error, newEntry);
       });

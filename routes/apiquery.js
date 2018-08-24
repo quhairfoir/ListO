@@ -43,36 +43,3 @@ module.exports = function(knex) {
   });
   return router;
 };
-
-// function getNewEntry(something) {
-//   return new Promise((resolve, reject) => {
-//       setTimeout(() => {
-//           if (!something) {
-//               reject(new Error("Can't do something without a thing"));
-//           } else {
-//               resolve(something);
-//           }
-//       }, 1000);
-//   });
-// }
-// getNewEntry(api.toYelp).then(console.log())
-
-// let newEntry = {};
-
-//     if (queryData.category_id === 4) {
-//       // const getNewEntry = new Promise(function(resolve, reject) {
-//         newEntry = api.toYelp(queryData.query)
-//         console.log("This is newEntry from OUTSIDE api call:", newEntry);
-//         // newEntry = api.toYelp(queryData.query);
-//         // console.log(newEntry);
-//         // if (!newEntry) {
-//         //   const error = new Error("shit didn't work");
-//         //   reject(error);
-//         // } else if (newEntry) {
-//           // resolve(newEntry)
-//         // }
-//       // });
-
-//       // getNewEntry.then(newEntry => console.log(newEntry));
-//       // will need: req.params.query (search text), req.params.user_id, req.params.category_id
-//     }
