@@ -9,7 +9,7 @@ const yelpKey = secrets.YELP_KEY;
 module.exports = function makeAPIHelpers() {
   return {
   
-    toYelp: function(query) {
+    toYelp: function(query, cb) {
       let newEntry = {};
 
       var options = { method: 'GET',
@@ -24,10 +24,12 @@ module.exports = function makeAPIHelpers() {
         newEntry.businessName = res.businesses[0].name;
         newEntry.address = res.businesses[0].location.display_address[0];
         newEntry.type = res.businesses[0].categories[0].alias;
+        // console.log("This is newEntry from INSIDE the GET:", newEntry);
+        cb(error, newEntry);
       });
       
-      console.log("This is newEntry from INSIDE the GET:", newEntry);
-      return (newEntry);
+      // console.log("This is newEntry from OUTSIDE the GET:", newEntry);
+      
     },
 
     callTMBD: function()  {

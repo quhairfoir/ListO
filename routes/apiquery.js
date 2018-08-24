@@ -10,7 +10,14 @@ let queryData = { user_id: 1, category_id: 4, query: "starbucks" };
 module.exports = function(knex) {
   // includes a GET to each API based on
   router.post("/", (req, res) => {
-    api.toYelp(queryData.query);
+    
+    api.toYelp(queryData.query,(err, result) => {
+      console.log(result);
+
+      // info to db
+
+      res.status(201).send();
+    });
   });
   return router;
 };
