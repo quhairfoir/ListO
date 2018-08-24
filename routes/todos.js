@@ -8,6 +8,16 @@ const router  = express.Router();
 // code will eventually funnel querys to search through separate APIs, unsure which route currently
 module.exports = (knex) => {
 
+  // get full list
+  router.get("/", (req, res) => {
+    knex
+      .select("*")
+      .from("todos")
+      .then((results) => {
+        res.json(results);
+    });
+  })
+
    // edit list item
    router.post("/:id", (req, res) => {
     console.log("Hello from todos PUT");
