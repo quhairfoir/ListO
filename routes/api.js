@@ -5,7 +5,10 @@ const request = require("request");
 const convert = require("xml-js");
 
 const yelpKey = secrets.YELP_KEY;
+const GRKey = secrets.GR_KEY;
+const TMDBKey = secrets.TMDB_KEY;
 
+// exports helper functions used by GET to "/api"
 module.exports = function makeAPIHelpers() {
   return {
     toYelp: function(query, cb) {
@@ -37,7 +40,7 @@ module.exports = function makeAPIHelpers() {
       const options = {
         method: "GET",
         url: "https://api.themoviedb.org/3/search/movie",
-        qs: { api_key: "f2670be02f10c2fbd7107a9f58a4f7ae", query }
+        qs: { api_key: TMDBKey, query }
       };
 
       request(options, function(error, response, body) {
@@ -46,7 +49,7 @@ module.exports = function makeAPIHelpers() {
         const res = JSON.parse(body);
 
         newEntry.name = res.results[0].title;
-        newEntry.description = res.results[0].overview;
+        newEntry.description = res.results[0].overview.slice(0, 90) + "...";
 
         cb(error, newEntry);
       });
@@ -58,7 +61,7 @@ module.exports = function makeAPIHelpers() {
       var options = {
         method: "GET",
         url: "https://www.goodreads.com/search.xml",
-        qs: { key: "4UGJGjue5hYwOv5gxWCjg", q: query }
+        qs: { key: GRKey, q: query }
       };
 
       request(options, function(error, response, body) {
