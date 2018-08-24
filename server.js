@@ -82,7 +82,6 @@ app.post("/login", (req, res) => {
       req.session.user = result[0];
       res.redirect('/')
     });
-    
 })
 
 

@@ -13,8 +13,11 @@
     <button class='auth'>
             <i class="fas fa-cog"></i>
     </button>
-    <button class='auth'>
-            <i class="fas fa-sign-out-alt"></i>
-    </button>
+
+    <form id="logout" method="POST" action="/auth"></form>
+        <button class='auth' type="submit" form="logout">
+                <i class="fas fa-sign-out-alt"></i>
+        </button>
+       
 
 </body>
