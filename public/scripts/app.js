@@ -14,6 +14,10 @@ $(() => {
   }).done((todos) => {
     for (todo of todos) {
       $("<p>").text(todo.name).appendTo($(".container"));
+      // filter though todos WITHIN this section
+      console.log(todos);
     }
   })
+
+  // must create category object to use when filtering with AJAX functions
 });
