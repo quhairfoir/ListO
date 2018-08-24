@@ -14,7 +14,8 @@ module.exports = (knex) => {
 
   // logout
   router.post("/", (req, res) => {
-    console.log("Hello from user DELETE logout");
+    req.session = null;
+    res.redirect("/login")
   });
 
   return router;
