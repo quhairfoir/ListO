@@ -13,6 +13,7 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+const cookieSession = require('cookie-session');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -20,6 +21,13 @@ const authRoutes = require("./routes/auth");
 const TODOsRoutes = require("./routes/todos");
 const APIroutes = require("./routes/apiquery");
 
+app.use(cookieSession({
+  name: 'session',
+  keys: ['1234'],
+
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}))
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -49,16 +57,55 @@ app.use("/api", APIroutes(knex));
 // Home page
 app.get("/", (req, res) => {
   let userFound = false;
-  // if(req.session.user_id) {
-  //   userFound = true;
-  // } 
-  // if (!userFound) {
-  //   res.redirect('/login');
-  // } else {
-    res.render('index');
-  // }
+  console.log(req.session);
+  let templateVars = {};
+  if(req.session.user) {
+    userFound = true;
+    templateVars.user = req.session.user;
+  } 
+  if (!userFound) {
+    res.redirect('/login');
+  } else {
+    res.render('index', templateVars);
+  }
 });
 
-app.listen(PORT, () => {
+app.get('/login', (req, res) => {
+  res.render('login');
+})
+
+app.post("/login", (req, res) => {
+    knex('users').where({email: req.body.email})
+    .select().then(result => {
+      console.log(result);
+      
+      req.session.user = result[0];
+      res.redirect('/')
+    });
+    
+})
+
+
+
+app.post("/login/register", (req, res) => {
+  knex.transaction(function() {
+    console.log('in the function');
+    knex('users')
+    .insert({first_name: req.body.first_name,
+          last_name: req.body.last_name,
+          password: req.body.password,
+          email: req.body.email,
+          username: req.body.username
+        })
+    .then(function() {
+      console.log('yay');
+    })
+  })
+  res.redirect("/");  
+});
+
+
+
+ app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
