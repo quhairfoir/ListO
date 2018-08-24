@@ -48,7 +48,15 @@ app.use("/api", APIroutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  let userFound = false;
+  // if(req.session.user_id) {
+  //   userFound = true;
+  // } 
+  // if (!userFound) {
+  //   res.redirect('/login');
+  // } else {
+    res.render('index');
+  // }
 });
 
 app.listen(PORT, () => {

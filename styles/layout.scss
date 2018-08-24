@@ -1,7 +1,75 @@
 body {
-  background-color: #EEE;
+  background-color: #2F3840;
+  margin-left: 250px;
+  margin-right:250px;
 
-  h1 {
-    color: #244751;
+  header{
+    padding-left: 10px;
   }
+  h1 {
+    color: #BAE0FF;
+    font-size: 6em;
+    margin-bottom: 0px;
+    display: inline;
+  }
+
+  h3 {
+    color: #5D707F;
+    font-size: 1.5em;
+    margin-top: 0px;
+  }
+  #user_id{
+    color: #8CA8BF;
+    font-size: 2em;
+    margin-top: 15px;
+    width: 450px;
+    display: inline;
+  }
+  .auth {
+    color: #8CA8BF;
+    background-color: #2F3840;
+    border: none;
+    float: right;
+  }
+  i.fas.fa-sign-out-alt {
+    margin-right: 0px;
+  }
+  i.fas.fa-cog{
+    margin-right: 0px;
+  }
+
+  i.fas.fa-user {
+    margin-right:75px;
+  }
+  textarea {
+    width: 800px;
+    height: 25px;
+  }
+  form{
+    padding-left: 10px;
+    padding-top: 15px;
+  }
+
+  .list {
+    color: #2F3840;
+    display: inline;
+    text-align: center;
+  }
+  main.container{
+    width: 200px;
+    height: 400px;
+    background-color: #8CA8BF;
+    margin: 10px;
+    display: inline;
+    float: left;
+    border-radius: 10px;
+  }
+  .submit {
+   float: right;
+   margin-right: 80px;
+   width: 40px;
+  }
+
 }
+
+

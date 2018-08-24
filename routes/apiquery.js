@@ -9,7 +9,15 @@ const router  = express.Router();
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
-    console.log("Hello from api GET");
+    knex
+    .select('name')
+    .from('categories')
+    .then((results) => {
+      res.json(results);
+      console.log(results);
+    })
+
+    // console.log("Hello from api GET");
   });
 
   router.post("/", (req, res) => {
@@ -18,3 +26,13 @@ module.exports = (knex) => {
 
   return router;
 }
+
+
+// router.get("/", (req, res) => {
+//   knex
+//     .select("*")
+//     .from("users")
+//     .then((results) => {
+//       res.json(results);
+//   });
+// });
