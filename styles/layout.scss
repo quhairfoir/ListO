@@ -18,7 +18,7 @@ body {
     font-size: 1.5em;
     margin-top: 0px;
   }
-  #user_id{
+  #user_name{
     color: #8CA8BF;
     font-size: 2em;
     margin-top: 15px;
@@ -30,9 +30,13 @@ body {
     background-color: #2F3840;
     border: none;
     float: right;
+    display: inline;
   }
-  i.fas.fa-sign-out-alt {
-    margin-right: 0px;
+  // i.fas.fa-sign-out-alt {
+  //   margin-right: 0px;
+  // }
+  form#logout {
+    display: inline;
   }
   i.fas.fa-cog{
     margin-right: 0px;
@@ -41,13 +45,33 @@ body {
   i.fas.fa-user {
     margin-right:75px;
   }
+  button.checkSubmit {
+    border-radius: 15px;
+    display: inline;
+    float: right;
+    margin-right: 50px;
+    width: 35px;
+  }
   textarea {
     width: 800px;
     height: 25px;
+    display: inline;
   }
   form{
     padding-left: 10px;
     padding-top: 15px;
+    width: 850;
+  }
+  .cat {
+    color: #8CA8BF;
+    background-color: #2F3840;
+    border: none;
+    float: right;
+    display: inline;
+    margin-top: 5px;
+  }
+  button#read.cat{
+    margin-right: 50px;
   }
 
   .list {
@@ -69,7 +93,9 @@ body {
    margin-right: 80px;
    width: 40px;
   }
-
+  h2 {
+    display: inline;
+  }
 }
 
 
