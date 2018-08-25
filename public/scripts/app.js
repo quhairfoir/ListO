@@ -1,14 +1,15 @@
 // UNUSED helper object used when filtering inside of /todos GET
 const categories = {
-  1: "To Buy",
-  2: "To Read",
-  3: "To Watch",
-  4: "To Visit"
+  "buy": 1,
+  "read": 2,
+  "watch": 3,
+  "visit": 4
 };
 
 // JQuery / AJAX functions
 $(() => {
 
+  let selectedCategory;
   // call retrieves user items from db and appends to appropriate table
   $.ajax({
     method: "GET",
@@ -39,41 +40,26 @@ $(() => {
 
   // onclick function to make category id available in DOM
   $("#read").click(function() {
-    $("<div>")
-      .attr("id", "typeSelect")
-      .text(2)
-      .css("visibility", "hidden")
-      .appendTo($("body"));
+    selectedCategory = 2;
   });
 
   $("#watch").click(function() {
-    $("<div>")
-      .attr("id", "typeSelect")
-      .text(3)
-      .css("visibility", "hidden")
-      .appendTo($("body"));
+    selectedCategory = 3;
   });
 
   $("#buy").click(function() {
-    $("<div>")
-      .attr("id", "typeSelect")
-      .text(1)
-      .css("visibility", "hidden")
-      .appendTo($("body"));
+    selectedCategory = 1;
   });
 
   $("#visit").click(function() {
-    $("<div>")
-      .attr("id", "typeSelect")
-      .text(4)
-      .css("visibility", "hidden")
-      .appendTo($("body"));
+    selectedCategory = 4;
   });
 
   // makes query object and sends to API route
   $("#Submit").click(function() {
+    if (selectedCategory) {
     let finalQuery = {
-      category_id: $("#typeSelect").html(),
+      category_id: selectedCategory,
       query: document.getElementById("queryText").value,
       user_id: $("#user_id").html()
     };
@@ -87,6 +73,8 @@ $(() => {
     }).done(() => {
       console.log("yay");
     });
+    } else {
+      alert("You must choose a category!");
+    }
   });
 });
-
