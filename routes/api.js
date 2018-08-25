@@ -24,7 +24,6 @@ module.exports = function makeAPIHelpers() {
       request(options, function(error, response, body) {
         if (error) throw new Error(error);
         const res = JSON.parse(body);
-        console.log(res);
         newEntry.name = res.businesses[0].name;
         newEntry.description =
           res.businesses[0].categories[0].alias +
@@ -45,12 +44,9 @@ module.exports = function makeAPIHelpers() {
 
       request(options, function(error, response, body) {
         if (error) throw new Error(error);
-
         const res = JSON.parse(body);
-
         newEntry.name = res.results[0].title;
         newEntry.description = res.results[0].overview.slice(0, 90) + "...";
-
         cb(error, newEntry);
       });
     },

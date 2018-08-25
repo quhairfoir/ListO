@@ -1,33 +1,33 @@
 body {
-  background-color: #2F3840;
-  margin-left: 250px;
-  margin-right:250px;
+  background-color: #2f3840;
+  width: 900px;
+  margin: auto;
 
-  header{
+  header {
     padding-left: 10px;
   }
   h1 {
-    color: #BAE0FF;
+    color: #bae0ff;
     font-size: 6em;
     margin-bottom: 0px;
     display: inline;
   }
 
   h3 {
-    color: #5D707F;
+    color: #5d707f;
     font-size: 1.5em;
     margin-top: 0px;
   }
-  #user_name{
-    color: #8CA8BF;
+  #user_id {
+    color: #8ca8bf;
     font-size: 2em;
     margin-top: 15px;
     width: 450px;
     display: inline;
   }
   .auth {
-    color: #8CA8BF;
-    background-color: #2F3840;
+    color: #8ca8bf;
+    background-color: #2f3840;
     border: none;
     float: right;
     display: inline;
@@ -38,12 +38,12 @@ body {
   form#logout {
     display: inline;
   }
-  i.fas.fa-cog{
+  i.fas.fa-cog {
     margin-right: 0px;
   }
 
   i.fas.fa-user {
-    margin-right:75px;
+    margin-right: 75px;
   }
   button.checkSubmit {
     border-radius: 15px;
@@ -57,7 +57,7 @@ body {
     height: 25px;
     display: inline;
   }
-  form{
+  form {
     padding-left: 10px;
     padding-top: 15px;
     width: 850;
@@ -75,27 +75,26 @@ body {
   }
 
   .list {
-    color: #2F3840;
+    color: #2f3840;
     display: inline;
     text-align: center;
   }
-  main.container{
+  main.container {
     width: 200px;
     height: 400px;
-    background-color: #8CA8BF;
+    background-color: #8ca8bf;
     margin: 10px;
     display: inline;
     float: left;
     border-radius: 10px;
   }
   .submit {
-   float: right;
-   margin-right: 80px;
-   width: 40px;
+    float: right;
+    margin-right: 80px;
+    width: 40px;
   }
-  h2 {
-    display: inline;
+
+  #user_id {
+    visibility: hidden;
   }
 }
-
-
