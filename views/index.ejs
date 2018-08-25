@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/header.css" type="text/css"/>
+    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -20,13 +20,25 @@
 <!-- <main class="container"> -->
   <!-- <div class="background"> -->
     <section class="input">
-        <form action="/api" method="GET">
-          <textarea name="text" placeholder="What do you need to do..?"></textarea>
-          <button class='submit'>
-              <i class="fas fa-check"></i>
-          </button>
+      <button id="read">
+          <i class="fas fa-book-open"></i>
+      </button>
+      <button id="watch">
+          <i class="fas fa-eye"></i>
+      </button>
+      <button id="buy">
+          <i class="fas fa-shopping-cart"></i>
+      </button>
+      <button id="visit">
+          <i class="fas fa-map-marker-alt"></i>
+      </button>
+        <form>
+          <textarea id="queryText" name="text" placeholder="What do you need to do..?"></textarea>
+              <i id="Submit" class="fas fa-check"></i>
         </form>
     </section>
+
+    <p id="user_id"> <%= user.id %> </p>
     
         <article class="list">
               <h2>
@@ -48,23 +60,5 @@
               <% include ./partials/_lists %>
            </h2>
           </article>
-        
-  <!-- </div> -->
-<!-- </main> -->
-<!--     
-    <form action="/api" method="GET">
-      <textarea name="text" placeholder="Say Hi, API"></textarea>
-      <input type="submit">
-    </form>
-      
-    <form action="/auth" method="POST">
-      <textarea name="text" placeholder="Say Hi, Authorization"></textarea>
-      <input type="submit">      
-    </form>
-        
-    <form action="/todos/1" method="POST">
-      <textarea name="text" placeholder="Say Hi, TODOS"></textarea>
-      <input type="submit">
-    </form> -->
   </body>
 </html>
