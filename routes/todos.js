@@ -18,18 +18,18 @@ module.exports = (knex) => {
     });
   })
 
-   // edit list item
-   router.post("/:id", (req, res) => {
-    console.log("Hello from todos PUT");
-  });
-
   // delete list item
-  router.post("/:id/delete", (req, res) => {
+  router.post("/delete", (req, res) => {
     console.log("Hello from todos DELETE");
   });
 
+   // edit list item
+   router.post("/edit", (req, res) => {
+    console.log("Hello from todos PUT");
+  });
+
   // move list item to new category
-  router.post("/:id/move", (req, res) => {
+  router.post("/move", (req, res) => {
     console.log("Hello from todos POST");
   });
 

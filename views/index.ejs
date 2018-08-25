@@ -16,8 +16,7 @@
     <header>
         <% include ./partials/_header %>
     </header>
-<!-- <main class="container"> -->
-  <!-- <div class="background"> -->
+    
     <section class="input">
       <button id="read">
           <i class="fas fa-book-open"></i>
@@ -38,7 +37,7 @@
     </section>
 
     <p id="user_id"> <%= user.id %> </p>
-    
+    <% include ./edit_form %>
       <article class="list">
         <h2>
           <% let category= "1"; %>
