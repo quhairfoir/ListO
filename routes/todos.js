@@ -20,17 +20,33 @@ module.exports = (knex) => {
 
   // delete list item
   router.post("/delete", (req, res) => {
-    console.log("Hello from todos DELETE");
+    knex.transaction(function() {
+      knex('todos')
+      .where({ id: req.body.id})
+      .delete()
+      .then(function() {
+        console.log('yay - item deleted!');
+      })
+    });
+    res.status(201).send();
   });
 
-   // edit list item
-   router.post("/edit", (req, res) => {
-    console.log("Hello from todos PUT");
-  });
+  //  // edit list item
+  //  router.post("/edit", (req, res) => {
+  //   console.log("Hello from todos PUT");
+  // });
 
   // move list item to new category
   router.post("/move", (req, res) => {
-    console.log("Hello from todos POST");
+    knex.transaction(function() {
+      knex('todos')
+      .where({ id: req.body.id})
+      .update({ category_id: req.body.category })
+      .then(function() {
+        console.log('yay - item moved!');
+      })
+    });
+    res.status(201).send();
   });
 
   return router;

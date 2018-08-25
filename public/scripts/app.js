@@ -53,24 +53,52 @@ $(() => {
     });
   };
 
-  // move todo form submission 
-  $("form").on("submit", function(event) {
+  const makeMoveObj = function() {
+    let moveObj = {};
+    let radioButtons = document.getElementsByName("category");
+    console.log(radioButtons);
+    for (var i = 0; i < radioButtons.length; i++) {
+      if (radioButtons[i].checked === true) {
+        moveObj.category = radioButtons[i].value;
+      } else {
+        console.log("No button selected");
+      }
+    }
+    if (selectedTodoID) {
+      moveObj.id = selectedTodoID;
+    }
+    return moveObj;
+  };
+
+  // move todo form submission
+  $("#move").on("click", function(event) {
     event.preventDefault();
-    let text = event.target[0].value;
-    console.log(text);
+    let moveObj = makeMoveObj();
+    console.log("This is moveObj inside form submit:", moveObj);
+    $.ajax({
+        method: "POST",
+        url: "/todos/move",
+        data: moveObj,
+        success: function() {
+          location.reload();
+        }
+      }).done(console.log("Todo moved!"));
+
   });
 
-  // $.ajax({
-  //   method: "POST",
-  //   url: "/todos/move",
-  //   data: {
-  //     id: selectedTodoID,
-  //     new_category: 0,
-  //   },
-  //   success: function() {
-  //     location.reload();
-  //   }
-  // }).done(console.log("Todo deleted"));
+  $("#delete").on("click", function(event) {
+    event.preventDefault();
+    $.ajax({
+      method: "POST",
+      url: "/todos/delete",
+      data: {
+        id: selectedTodoID,
+      },
+      success: function() {
+        location.reload();
+      }
+    }).done(console.log("Todo deleted"));
+  });
 
   // variable for tracking chosen query category
   let selectedCategory;
