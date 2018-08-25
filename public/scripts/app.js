@@ -20,16 +20,44 @@ $(() => {
   $.ajax({
     method: "GET",
     url: "/todos"
-  }).done((todos) => {
+  }).done(todos => {
     for (todo of todos) {
-      console.log("This is todo.category_id:", todo.category_id);
-      console.log($('.list_header').html())
-      console.log("This is $('.list_header').val()):", $('.list_header').val())
-      if (todo.category_id === Number($('.list_header').val())){
-        $("<li>").text(todo.name).appendTo($(".list"));
-      };
-  }
-  })
+      if (todo.user_id === Number($("#user_id").html())) {
+        if (todo.category_id === 1) {
+          $("<li>")
+            .text(todo.name)
+            .appendTo($(" #1 > .list"));
+        } else if (todo.category_id === 2) {
+          $("<li>")
+            .text(todo.name)
+            .appendTo($(" #2 > .list"));
+        } else if (todo.category_id === 3) {
+          $("<li>")
+            .text(todo.name)
+            .appendTo($(" #3 > .list"));
+        } else if (todo.category_id === 4) {
+          $("<li>")
+            .text(todo.name)
+            .appendTo($(" #4 > .list"));
+        }
+      }
+    }
+    // $('.list').on('click', 'li', function editFunc(){
+    //   var x = document.getElementById("editForm");
+    //   // if (x.style.display === 'none') {
+    //   //     x.style.display = 'block';
+    //   // }
+      
+    //   var oldCat = $(this).parent().parent().attr("id");
+    //   console.log($(this).text);
+    //   console.log(oldCat);
+      
+    //   // knex.select * from todos where name = item name
+    //   // UPDATE todos SET category = 'whatever is selected' WHERE name = 'name';
+    // });        
+
+  });
+
 
 
   $("#read").click(function() {
