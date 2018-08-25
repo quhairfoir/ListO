@@ -4,11 +4,10 @@ const express = require("express");
 const router = express.Router();
 const api = require("./api")();
 
-// hard coded query data used for testing
-let queryData = { user_id: 1, category_id: 2, query: "Eat Pray Love" };
 
 // route funnels queries to APIs, then adds results to database
 module.exports = function(knex) {
+  
   // includes a GET to each API based on passed category id
   router.post("/", (req, res) => {
 

@@ -80,9 +80,13 @@ $(() => {
     $.ajax({
       method: "POST",
       url: "/api",
-      data: finalQuery
+      data: finalQuery,
+      success: function() {   
+        location.reload();  
+      }
     }).done(() => {
       console.log("yay");
     });
   });
 });
+
