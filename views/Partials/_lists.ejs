@@ -1,3 +1,19 @@
-<main class="container">
-    THIS IS A LIST
+<!-- views/partials/_header.ejs -->
+<main class="container" id="<%= category %>">
+
+  <% let title = "";
+    if (Number(category) === 1){
+      title = "To Buy";
+    } else if (Number(category) === 2){
+      title = "To Read";
+    } else if (Number(category) === 3){
+      title = "To Watch";
+    } else if (Number(category) === 4){
+      title = "To Visit";
+    } %>
+
+    <h3 class="list_header"> <%= title %> </h3>
+
+    <ul class="list"></ul>
+
 </main>
