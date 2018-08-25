@@ -28,12 +28,40 @@ $(() => {
       if (todo.category_id === Number($('.list_header').val())){
         $("<li>").text(todo.name).appendTo($(".list"));
       };
-      
-      // filter though todos WITHIN this section
-      // console.log(todo.category_id)
-      // $("<h3>").text(categories[todo.category_id]).appendTo($(".container"));
-
-    // }
   }
   })
-})
+
+
+  $("#read").click(function() {
+    $("<div>").attr('id', 'typeSelect').text(2).appendTo($('body'));
+  });
+
+  $("#watch").click(function() {
+    $("<div>").attr('id', 'typeSelect').text(3).appendTo($('body'));
+  });
+  
+  $("#buy").click(function() {
+    $("<div>").attr('id', 'typeSelect').text(1).appendTo($('body'));
+  });
+
+  $("#visit").click(function() {
+    $("<div>").attr('id', 'typeSelect').text(4).appendTo($('body'));
+  });
+
+  $("#Submit").click(function() {
+    let finalQuery = {
+      category_id: $('#typeSelect').html(),
+      query: document.getElementById("queryText").value,
+      user_id: $("#user_id").html()
+      };
+      $.ajax({
+          method: "POST",
+          url: "/api",
+          data: finalQuery
+        }).done(() => {
+          console.log('yay')
+          })
+  })
+
+  
+});
