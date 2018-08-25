@@ -15,31 +15,37 @@ $(() => {
   }).done(todos => {
     for (todo of todos) {
       if (todo.user_id === Number($("#user_id").html())) {
-        var blablabla;
+        var $newTodo;
         if (todo.category_id === 1) {
-          blablabla = $("<li>")
+          $newTodo = $("<li>")
             .text(todo.name)
             .attr("id", "todo_" + todo.id)
             .appendTo($(" #1 > .list"));
         } else if (todo.category_id === 2) {
-          blablabla = $("<li>")
+          $newTodo = $("<li>")
             .text(todo.name)
             .attr("id", "todo_" + todo.id)
             .appendTo($(" #2 > .list"));
         } else if (todo.category_id === 3) {
-          blablabla = $("<li>")
+          $newTodo = $("<li>")
             .text(todo.name)
             .attr("id", "todo_" + todo.id)
             .appendTo($(" #3 > .list"));
         } else if (todo.category_id === 4) {
-          blablabla = $("<li>")
+          $newTodo = $("<li>")
             .text(todo.name)
             .attr("id", "todo_" + todo.id)
             .appendTo($(" #4 > .list"));
         }
-        getTodoID(blablabla);
+        function getTodoID (element) {
+          element.click(function() {
+            selectedTodoID = element.attr("id").slice(5);
+            console.log("selectedTodoID set to:", selectedTodoID);
+          });
       }
+      getTodoID($newTodo);
     }
+  }
   });
 
   //variable for tracking clicked todo ID
