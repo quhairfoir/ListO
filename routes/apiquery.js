@@ -12,12 +12,17 @@ module.exports = function(knex) {
   // includes a GET to each API based on passed category id
   router.post("/", (req, res) => {
 
-    let category_id = queryData.category_id;
-    let user_id = queryData.user_id;
+    let category_id = req.body.category_id;
+    let user_id = req.body.user_id;
+    let query = req.body.query;
+
+    console.log("This is category_id, user_id, query:", category_id, user_id, query);
+
+    console.log("This is req.body:", req.body);
 
     // To Eat route
-    if (category_id === 4) {
-      api.toYelp(queryData.query, (err, result) => {
+    if (Number(category_id) === 4) {
+      api.toYelp(query, (err, result) => {
         console.log(result);
 
         knex.transaction(function() {
@@ -31,8 +36,8 @@ module.exports = function(knex) {
         res.status(201).send();
       });
     // To Watch route
-    } else if (category_id === 3) {
-      api.toTMDB(queryData.query, (err, result) => {
+    } else if (Number(category_id) === 3) {
+      api.toTMDB(query, (err, result) => {
         console.log(result);
 
         knex.transaction(function() {
@@ -46,8 +51,8 @@ module.exports = function(knex) {
         res.status(201).send();
       });
     // To Read route
-    } else if (category_id === 2) {
-      api.toGR(queryData.query, (err, result) => {
+    } else if (Number(category_id) === 2) {
+      api.toGR(query, (err, result) => {
         console.log(result);
 
         knex.transaction(function() {
@@ -61,10 +66,10 @@ module.exports = function(knex) {
         res.status(201).send();
       });
     // To Buy route
-    } else if (category_id === 1){
+    } else if (Number(category_id) === 1){
       knex.transaction(function() {
         knex('todos')
-        .insert({name: result.name, description: result.description, category_id, user_id})
+        .insert({name: query, description: "item", category_id, user_id})
         .then(function() {
           console.log('yay - data logged');
         })

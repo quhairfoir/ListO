@@ -32,7 +32,13 @@ $(() => {
       query: document.getElementById("queryText").value,
       user_id: $("#user_id").html()
       };
-      console.log(finalQuery);
+      $.ajax({
+          method: "POST",
+          url: "/api",
+          data: finalQuery
+        }).done(() => {
+          console.log('yay')
+          })
   })
 
   
