@@ -8,6 +8,8 @@ const categories = {
 
 // JQuery / AJAX functions
 $(() => {
+
+  // example GET call, from project skeleton
   $.ajax({
     method: "GET",
     url: "/users"
@@ -17,21 +19,23 @@ $(() => {
       $("<div>").text(user.first_name).appendTo($("body"));
     }
   });
+
+  // call retrieves user items from db and appends to appropriate table
   $.ajax({
     method: "GET",
     url: "/todos"
   }).done((todos) => {
     for (todo of todos) {
-      console.log("This is todo.category_id:", todo.category_id);
-      console.log($('.list_header').html())
-      console.log("This is $('.list_header').val()):", $('.list_header').val())
-      if (todo.category_id === Number($('.list_header').val())){
+      // console.log("This is todo.category_id:", todo.category_id);
+      // console.log($('.list_header').html())
+      // console.log("This is $('.list_header').val()):", $('.list_header').val())
+      // if (todo.category_id === Number($('.list_header').val())){
         $("<li>").text(todo.name).appendTo($(".list"));
       };
-  }
+  // }
   })
 
-
+  // onclick function to make category id available in DOM
   $("#read").click(function() {
     $("<div>").attr('id', 'typeSelect').text(2).appendTo($('body'));
   });
@@ -48,6 +52,7 @@ $(() => {
     $("<div>").attr('id', 'typeSelect').text(4).appendTo($('body'));
   });
 
+  // makes query object and sends to API route
   $("#Submit").click(function() {
     let finalQuery = {
       category_id: $('#typeSelect').html(),
