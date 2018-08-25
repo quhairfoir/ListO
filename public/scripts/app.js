@@ -1,4 +1,4 @@
-//helper object used when filtering inside of /todos GET
+// UNUSED helper object used when filtering inside of /todos GET
 const categories = {
   1: "To Buy",
   2: "To Read",
@@ -8,18 +8,6 @@ const categories = {
 
 // JQuery / AJAX functions
 $(() => {
-  // example GET call, from project skeleton
-  $.ajax({
-    method: "GET",
-    url: "/users"
-  }).done(users => {
-    console.log(users);
-    for (user of users) {
-      $("<div>")
-        .text(user.first_name)
-        .appendTo($("body"));
-    }
-  });
 
   // call retrieves user items from db and appends to appropriate table
   $.ajax({
@@ -54,6 +42,7 @@ $(() => {
     $("<div>")
       .attr("id", "typeSelect")
       .text(2)
+      .css("visibility", "hidden")
       .appendTo($("body"));
   });
 
@@ -61,6 +50,7 @@ $(() => {
     $("<div>")
       .attr("id", "typeSelect")
       .text(3)
+      .css("visibility", "hidden")
       .appendTo($("body"));
   });
 
@@ -68,6 +58,7 @@ $(() => {
     $("<div>")
       .attr("id", "typeSelect")
       .text(1)
+      .css("visibility", "hidden")
       .appendTo($("body"));
   });
 
@@ -75,6 +66,7 @@ $(() => {
     $("<div>")
       .attr("id", "typeSelect")
       .text(4)
+      .css("visibility", "hidden")
       .appendTo($("body"));
   });
 
