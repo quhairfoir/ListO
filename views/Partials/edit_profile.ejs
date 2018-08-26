@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<main hidden id="editProfile">
+<!-- <!DOCTYPE html> -->
+<main id="editProfile">
     Edit your Profile:
-        <form method="" action="">
-                <input type="name" name="first_name" placeholder="First Name">
-                <input type="name" name="last_name" placeholder="Last Name">
-                <input type="username" name="username" placeholder="Username">
-                <input type="email" name="email" placeholder="Email">
-                <input type="password" name="password" placeholder="Password">
-                <input type="submit" value="Update">
-        </form>
-      </main>
+    <form method="" action="">
+        <input type="name" name="first_name" value="<%= user.first_name %>">
+        <input type="name" name="last_name" value="<%= user.last_name %>">
+        <input type="username" name="username" value="<%= user.username %>">
+        <input type="email" name="email" value="<%= user.email %>">
+        <!-- <input type="password" name="password" placeholder="Password"> -->
+        <input type="submit" value="Update">
+    </form>
+</main>

@@ -49,7 +49,7 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Mount all resource routes
-app.use("/users", usersRoutes(knex)); // NEED TO CHANGE
+app.use("/users", usersRoutes(knex));
 app.use("/auth", authRoutes(knex));
 app.use("/todos", TODOsRoutes(knex));
 app.use("/api", APIroutes(knex));

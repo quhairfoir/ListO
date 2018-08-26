@@ -8,6 +8,19 @@ const categories = {
 
 // JQuery / AJAX functions
 $(() => {
+  
+  //
+  $.ajax({
+    method: "GET",
+    url: "/users"
+  }).done(users => {
+    for (user of users) {
+      if (user.id === Number($("#user_id").text())) {
+        $("#user_name").text(user.first_name + "'s Lists");
+      }
+    }
+  });
+
   // call retrieves user items from db and appends to appropriate table
   $.ajax({
     method: "GET",
@@ -51,23 +64,37 @@ $(() => {
   //variable for tracking clicked todo ID
   let selectedTodoID;
 
-  // helper function, retrieves unique id from todo <li>'s id
-  var getTodoID = function(element) {
-    element.click(function() {
-      selectedTodoID = element.attr("id").slice(5);
-      console.log("selectedTodoID set to:", selectedTodoID);
-    });
-  };
+  // sends edit user form data to POST /users/edit
+  $("#editProfile").on("submit", function(event) {
+    event.preventDefault();
+    let editUserObj = {
+      id: $("#user_id").html(),
+      first_name: event.target[0].value,
+      last_name: event.target[1].value,
+      email: event.target[3].value,
+      username: event.target[2].value
+      // password: event.target[4].value
+    }
+    console.log(editUserObj);
+    $.ajax({
+      method: "POST",
+      url: "/users/edit",
+      data: editUserObj,
+      success: function() {
+        location.reload();
+      }
+    }).done(console.log("User sucessfully edited!"));
+  });
 
+  // helper function that gets data required to move a todo to a different list 
   const makeMoveObj = function() {
     let moveObj = {};
     let radioButtons = document.getElementsByName("category");
-    console.log(radioButtons);
     for (var i = 0; i < radioButtons.length; i++) {
       if (radioButtons[i].checked === true) {
         moveObj.category = radioButtons[i].value;
       } else {
-        console.log("No button selected");
+        alert("No button selected!");
       }
     }
     if (selectedTodoID) {
@@ -75,6 +102,8 @@ $(() => {
     }
     return moveObj;
   };
+
+
 
   // move todo form submission
   $("#move").on("click", function(event) {
@@ -89,9 +118,9 @@ $(() => {
           location.reload();
         }
       }).done(console.log("Todo moved!"));
-
   });
 
+  // delete todo form submission
   $("#delete").on("click", function(event) {
     event.preventDefault();
     $.ajax({
