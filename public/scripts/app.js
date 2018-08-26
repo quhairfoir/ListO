@@ -141,6 +141,10 @@ $(() => {
     selectedCategory = 4;
   });
 
+  $('form').on("submit", function(event) {
+    event.preventDefault();
+  });
+
   // makes query object and sends to API route
   $("#Submit").click(function() {
     if (selectedCategory) {
