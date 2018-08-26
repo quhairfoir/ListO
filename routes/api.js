@@ -11,6 +11,33 @@ const TMDBKey = secrets.TMDB_KEY;
 // exports helper functions used by GET to "/api"
 module.exports = function makeAPIHelpers() {
   return {
+    
+    toTrakt: function(query, cb) {
+      let newEntry = {};
+
+      const options = {
+        method: "GET",
+        url: "",
+        qs: { query, type: "movie,show" },
+        headers: {
+          "Cache-Control": "no-cache",
+          "trakt-api-version": "2",
+          "trakt-api-key":
+            "efe40bb42fdecd98b8ca120edec38d1f6af3edc3629886be7b519a98c48f24e2",
+          "Content-type": "application/json"
+        }
+      };
+
+      request(options, function(error, response, body) {
+        if (error) throw new Error(error);
+        const res = JSON.parse(body);
+        newEntry.name = res.show.title;
+        newEntry.description =
+          res.type + ", " + res.show.overview.slice(0, 90) + "...";
+        cb(error, newEntry);
+      });
+    },
+
     toYelp: function(query, cb) {
       let newEntry = {};
 

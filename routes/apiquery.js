@@ -22,7 +22,7 @@ module.exports = function(knex) {
     // To Eat route
     if (Number(category_id) === 4) {
       api.toYelp(query, (err, result) => {
-        console.log(result);
+        console.log("This is result from Yelp:", result);
 
         knex.transaction(function() {
           knex('todos')
@@ -36,8 +36,8 @@ module.exports = function(knex) {
       });
     // To Watch route
     } else if (Number(category_id) === 3) {
-      api.toTMDB(query, (err, result) => {
-        console.log(result);
+      api.toTrakt(query, (err, result) => {
+        console.log("This is result from Trakt:", result);
 
         knex.transaction(function() {
           knex('todos')
@@ -52,7 +52,7 @@ module.exports = function(knex) {
     // To Read route
     } else if (Number(category_id) === 2) {
       api.toGR(query, (err, result) => {
-        console.log(result);
+        console.log("This is result from GoodReads:", result);
 
         knex.transaction(function() {
           knex('todos')
