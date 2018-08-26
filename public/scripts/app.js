@@ -1,10 +1,10 @@
-// UNUSED helper object used when filtering inside of /todos GET
-const categories = {
-  buy: 1,
-  read: 2,
-  watch: 3,
-  visit: 4
-};
+// // UNUSED helper object used when filtering inside of /todos GET
+// const categories = {
+//   buy: 1,
+//   read: 2,
+//   watch: 3,
+//   visit: 4
+// };
 
 // JQuery / AJAX functions
 $(() => {
@@ -20,13 +20,6 @@ $(() => {
       }
     }
   });
-
-  // for (todo of todos) {
-    //     if (todo.user_id === Number($("#user_id").html())) {
-    //       let $newTodo = $("<li>")
-    //         .text(todo.name)
-    //         .attr("id", "todo_" + todo.id)
-    //         .appendTo($(`${todo.id} > .list`));
 
   // call retrieves user items from db and appends to appropriate table
   $.ajax({
@@ -84,8 +77,6 @@ $(() => {
     for (var i = 0; i < radioButtons.length; i++) {
       if (radioButtons[i].checked === true) {
         moveObj.category = radioButtons[i].value;
-      } else {
-        alert("No button selected!");
       }
     }
     if (selectedTodoID) {
