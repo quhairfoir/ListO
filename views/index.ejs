@@ -1,73 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Home Page</title>
+    
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link href="https://fonts.googleapis.com/css?family=Arimo|Oxygen:400,700" rel="stylesheet">
 
-<head>
-  <title>Home Page</title>
-
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-    crossorigin="anonymous">
-
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
-</head>
-
-<body>
-  <header>
-    <% include ./partials/_header %>
-      <% include ./partials/edit_profile %>
-  </header>
-
-  <section class="input">
-    <form>
-      <textarea id="queryText" name="text" placeholder="What do you need to do..?"></textarea>
-      <button class="checkSubmit"><i id="Submit" class="fas fa-check"></i></button>
-      <button class="cat" id="read">
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+  </head>
+  
+  <body>
+    <div id="user_id"> <%= user.id %> </div>
+    <header>
+        <% include ./partials/_header %>
+        <% include ./partials/edit_profile %>
+    </header>
+    <p>To get started, please select a category:</p>
+    <button class="cat" id="read">
         <i class="fas fa-book-open"></i>
-      </button>
-      <button class="cat" id="watch">
+        Read
+    </button>
+    <button class="cat" id="watch">
         <i class="fas fa-eye"></i>
-      </button>
-      <button class="cat" id="buy">
+        Watch
+    </button>
+    <button class="cat" id="buy">
         <i class="fas fa-shopping-cart"></i>
-      </button>
-      <button class="cat" id="visit">
+        Buy
+    </button>
+    <button class="cat" id="visit">
         <i class="fas fa-map-marker-alt"></i>
-      </button>
-    </form>
-  </section>
-
-  <p id="user_id">
-    <%= user.id %>
-  </p>
-  <% include ./edit_form %>
+        Visit
+    </button>
+    <section class="input">
+      <form>
+        <textarea id="queryText" name="text" placeholder="What do you need to do..?"></textarea>
+        <button class="checkSubmit"><i id="Submit" class="fas fa-check"></i></button>
+      </form>
+    </section>
+    
+    <% include ./edit_form %>
     <article class="list">
-      <h2>
-        <% let category= "1"; %>
-          <% include ./partials/_lists %>
-      </h2>
+      
+      <% let category= "1"; %>
+      <% include ./partials/_lists %>
+      
     </article>
     <article class="list">
-      <h2>
-        <% category= "2"; %>
-          <% include ./partials/_lists %>
-      </h2>
+      
+      <% category= "2"; %>
+      <% include ./partials/_lists %>
+      
     </article>
     <article class="list">
-      <h2>
-        <% category= "3"; %>
-          <% include ./partials/_lists %>
-      </h2>
+      
+      <% category= "3"; %>
+      <% include ./partials/_lists %>
+      
     </article>
     <article class="list">
-      <h2>
-        <% category= "4"; %>
-          <% include ./partials/_lists %>
-      </h2>
+      
+      <% category= "4"; %>
+      <% include ./partials/_lists %>
+      
     </article>
-
-</body>
-
+    
+  </body>
 </html>

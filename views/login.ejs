@@ -2,10 +2,15 @@
 <html lang="en">
 <head>
   <title>ListO</title>
-  <link rel="stylesheet" href="login_layout.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/login_layout.css" type="text/css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Arimo|Oxygen:400,700" rel="stylesheet">
+
 </head>
 <header>
-   <h1>ListO</h1>     
+   <h1>ListO</h1>   
 <h2>Login</h2>
 <h3>Enter your email and password</h3>
 </header>
@@ -15,7 +20,7 @@
     <form method="POST" action="/login">
         <input type="email" name="email" placeholder="email">
         <input type="password" name="password" placeholder="password">
-        <input type="submit" value="login">
+        <input type="submit" value="login" class="button">
     </form>
     <h2>Register</h2>
     <h3>Enter your email and password</h3>
@@ -27,9 +32,10 @@
             <input type="name" name="first_name" placeholder="First Name">
             <input type="name" name="last_name" placeholder="Last Name">
             <input type="username" name="username" placeholder="Username">
+            <div></div>
             <input type="email" name="email" placeholder="email">
             <input type="password" name="password" placeholder="password">
-            <input type="submit" value="Register">
+            <input type="submit" value="Register" class="button">
         </form>
 </body>
 </html>
