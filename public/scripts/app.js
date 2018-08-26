@@ -41,6 +41,10 @@ $(() => {
           });
       }
       getTodoID($newTodo);
+      $("<li>")
+        .text(todo.description)
+        .attr("class", "desc_li")
+        .appendTo($(`#${todo.category_id} > .list`));
     }
   }
   });
