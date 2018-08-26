@@ -7,6 +7,7 @@ const convert = require("xml-js");
 const yelpKey = secrets.YELP_KEY;
 const GRKey = secrets.GR_KEY;
 const TMDBKey = secrets.TMDB_KEY;
+const traktKey = secrets.TRAKT_KEY;
 
 // exports helper functions used by GET to "/api"
 module.exports = function makeAPIHelpers() {
@@ -17,13 +18,12 @@ module.exports = function makeAPIHelpers() {
 
       const options = {
         method: "GET",
-        url: "",
+        url: 'https://api.trakt.tv/search',
         qs: { query, type: "movie,show" },
         headers: {
           "Cache-Control": "no-cache",
           "trakt-api-version": "2",
-          "trakt-api-key":
-            "efe40bb42fdecd98b8ca120edec38d1f6af3edc3629886be7b519a98c48f24e2",
+          "trakt-api-key": traktKey,
           "Content-type": "application/json"
         }
       };
@@ -31,9 +31,10 @@ module.exports = function makeAPIHelpers() {
       request(options, function(error, response, body) {
         if (error) throw new Error(error);
         const res = JSON.parse(body);
-        newEntry.name = res.show.title;
+        console.log(res);
+        newEntry.name = res[0].show.title;
         newEntry.description =
-          res.type + ", " + res.show.overview.slice(0, 90) + "...";
+          res[0].type + ", " + res[0].show.overview.slice(0, 50) + "...";
         cb(error, newEntry);
       });
     },
@@ -73,7 +74,7 @@ module.exports = function makeAPIHelpers() {
         if (error) throw new Error(error);
         const res = JSON.parse(body);
         newEntry.name = res.results[0].title;
-        newEntry.description = res.results[0].overview.slice(0, 90) + "...";
+        newEntry.description = res.results[0].overview.slice(0, 50) + "...";
         cb(error, newEntry);
       });
     },
