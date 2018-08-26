@@ -21,6 +21,13 @@ $(() => {
     }
   });
 
+  // for (todo of todos) {
+    //     if (todo.user_id === Number($("#user_id").html())) {
+    //       let $newTodo = $("<li>")
+    //         .text(todo.name)
+    //         .attr("id", "todo_" + todo.id)
+    //         .appendTo($(`${todo.id} > .list`));
+
   // call retrieves user items from db and appends to appropriate table
   $.ajax({
     method: "GET",
@@ -28,28 +35,12 @@ $(() => {
   }).done(todos => {
     for (todo of todos) {
       if (todo.user_id === Number($("#user_id").html())) {
+        console.log(todo);
         var $newTodo;
-        if (todo.category_id === 1) {
           $newTodo = $("<li>")
             .text(todo.name)
             .attr("id", "todo_" + todo.id)
-            .appendTo($(" #1 > .list"));
-        } else if (todo.category_id === 2) {
-          $newTodo = $("<li>")
-            .text(todo.name)
-            .attr("id", "todo_" + todo.id)
-            .appendTo($(" #2 > .list"));
-        } else if (todo.category_id === 3) {
-          $newTodo = $("<li>")
-            .text(todo.name)
-            .attr("id", "todo_" + todo.id)
-            .appendTo($(" #3 > .list"));
-        } else if (todo.category_id === 4) {
-          $newTodo = $("<li>")
-            .text(todo.name)
-            .attr("id", "todo_" + todo.id)
-            .appendTo($(" #4 > .list"));
-        }
+            .appendTo($(`#${todo.category_id} > .list`));
         function getTodoID (element) {
           element.click(function() {
             selectedTodoID = element.attr("id").slice(5);
