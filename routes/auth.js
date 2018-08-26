@@ -7,15 +7,26 @@ const router  = express.Router();
 // this will be session control, login/logout through req.session.ids
 module.exports = (knex) => {
 
-  // login
+  // render login page
   router.get("/", (req, res) => {
-    console.log("Hello from user GET (login)");
+    res.render('login');
+  })
+
+  // login
+  router.post("/login", (req, res) => {
+    knex('users').where({email: req.body.email})
+    .select().then(result => {
+      console.log(result);
+      
+      req.session.user = result[0];
+      res.redirect('/')
+    });
   });
 
   // logout
-  router.post("/", (req, res) => {
+  router.post("/logout", (req, res) => {
     req.session = null;
-    res.redirect("/login")
+    res.redirect("/auth")
   });
 
   return router;

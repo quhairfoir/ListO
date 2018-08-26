@@ -141,7 +141,7 @@ $(() => {
     selectedCategory = 4;
   });
 
-  $('form').on("submit", function(event) {
+  $('#category_choice').on("submit", function(event) {
     event.preventDefault();
   });
 

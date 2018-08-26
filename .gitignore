@@ -4,3 +4,4 @@ secrets.js
 .env
 *.log
 *.sqlite3
+trakt_api_test.js
