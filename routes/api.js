@@ -6,7 +6,6 @@ const convert = require("xml-js");
 
 const yelpKey = secrets.YELP_KEY;
 const GRKey = secrets.GR_KEY;
-const TMDBKey = secrets.TMDB_KEY;
 const traktKey = secrets.TRAKT_KEY;
 
 // exports helper functions used by GET to "/api"
@@ -57,24 +56,6 @@ module.exports = function makeAPIHelpers() {
           res.businesses[0].categories[0].alias +
           ", " +
           res.businesses[0].location.display_address[0];
-        cb(error, newEntry);
-      });
-    },
-
-    toTMDB: function(query, cb) {
-      let newEntry = {};
-
-      const options = {
-        method: "GET",
-        url: "https://api.themoviedb.org/3/search/movie",
-        qs: { api_key: TMDBKey, query }
-      };
-
-      request(options, function(error, response, body) {
-        if (error) throw new Error(error);
-        const res = JSON.parse(body);
-        newEntry.name = res.results[0].title;
-        newEntry.description = res.results[0].overview.slice(0, 50) + "...";
         cb(error, newEntry);
       });
     },
