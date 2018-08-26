@@ -12,12 +12,14 @@ body {
     font-size: 6em;
     margin-bottom: 0px;
     display: inline;
+    // font-family: 'Oxygen', sans-serif;
   }
 
   h3 {
     color: #5d707f;
     font-size: 1.5em;
     margin-top: 0px;
+    font-family: 'Oxygen', sans-serif;
   }
   #user_name {
     color: #8ca8bf;
@@ -26,6 +28,7 @@ body {
     width: 450px;
     display: inline;
     margin-bottom:3px;
+    font-family: 'Oxygen', sans-serif;
   }
   .auth {
     color: #8ca8bf;
@@ -90,6 +93,8 @@ body {
     margin-top: 5px;
     padding-top: 5px;
     margin-left: 15px;
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 700;
     &:hover {
       color: white;
     }
@@ -101,12 +106,20 @@ body {
     list-style-type: disc;
     list-style-position: inside;
     text-indent: -1.4em;
+    font-family: 'Oxygen', sans-serif;
+  }
+
+  .list_header{
+    color: #2f3840;
+    margin-bottom: 0px;
+    font-family: 'Oxygen', sans-serif;
   }
 
   .desc_li {
     font-size: .8em;
-    padding-left: 35px;
+    padding-left: 40px;
     list-style-type: none;
+    font-style: italic;
   }
 
   main.container {
