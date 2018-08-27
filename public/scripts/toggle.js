@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("i.fas.fa-cog ").click(function(){
+    $("i.fas.fa-user").click(function(){
         $('#editProfile').slideToggle("slow")
     });
 });
