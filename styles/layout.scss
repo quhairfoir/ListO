@@ -235,4 +235,10 @@ body {
       border-color: white;
     }
   }
+  li.listItem {
+    &:hover {
+      color: white;
+      border-color: white;
+    }
+  }
 }
