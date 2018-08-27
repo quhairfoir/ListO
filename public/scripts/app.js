@@ -39,7 +39,7 @@ $(() => {
           element.click(function() {
             selectedTodoID = element.attr("id").slice(5);
             console.log("selectedTodoID set to:", selectedTodoID);
-                  $('#editForm').slideToggle("slow")
+                  $('#editForm').slideToggle("slow").css("visibility", "visible", "display", "block")
               });
       }
       getTodoID($newTodo);

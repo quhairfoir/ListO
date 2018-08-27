@@ -152,13 +152,15 @@ body {
     padding-left: 5px;
     border-radius: 10px;
     width: 855px;
-    display: hidden;
+    visibility: hidden;
+    display: none;
     // display: none;
   }
   #editForm {
     color: #8ca8bf; 
     width: 848px;
-    display: hidden;
+    visibility: hidden;
+    display: none;
     // display: none;
   }
   fieldset {
