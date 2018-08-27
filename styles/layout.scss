@@ -152,12 +152,14 @@ body {
     padding-left: 5px;
     border-radius: 10px;
     width: 855px;
-    display: none;
+    display: hidden;
+    // display: none;
   }
   #editForm {
     color: #8ca8bf; 
     width: 848px;
-    display: none;
+    display: hidden;
+    // display: none;
   }
   fieldset {
     border: 2px solid #5d707f;

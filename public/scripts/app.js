@@ -33,12 +33,14 @@ $(() => {
           $newTodo = $("<li>")
             .text(todo.name)
             .attr("id", "todo_" + todo.id)
+            .attr("class", "listItem")
             .appendTo($(`#${todo.category_id} > .list`));
         function getTodoID (element) {
           element.click(function() {
             selectedTodoID = element.attr("id").slice(5);
             console.log("selectedTodoID set to:", selectedTodoID);
-          });
+                  $('#editForm').slideToggle("slow")
+              });
       }
       getTodoID($newTodo);
       $("<li>")
