@@ -64,46 +64,11 @@ app.get("/", (req, res) => {
     templateVars.user = req.session.user;
   } 
   if (!userFound) {
-    res.redirect('/login');
+    res.redirect('/auth');
   } else {
     res.render('index', templateVars);
   }
 });
-
-app.get('/login', (req, res) => {
-  res.render('login');
-})
-
-app.post("/login", (req, res) => {
-    knex('users').where({email: req.body.email})
-    .select().then(result => {
-      console.log(result);
-      
-      req.session.user = result[0];
-      res.redirect('/')
-    });
-})
-
-
-
-app.post("/login/register", (req, res) => {
-  knex.transaction(function() {
-    console.log('in the function');
-    knex('users')
-    .insert({first_name: req.body.first_name,
-          last_name: req.body.last_name,
-          password: req.body.password,
-          email: req.body.email,
-          username: req.body.username
-        })
-    .then(function() {
-      console.log('yay');
-    })
-  })
-  res.redirect("/");  
-});
-
-
 
  app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
