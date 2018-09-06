@@ -3,9 +3,6 @@
 const express = require('express');
 const router  = express.Router();
 
-
-
-// code will eventually funnel querys to search through separate APIs, unsure which route currently
 module.exports = (knex) => {
 
   // get full list
@@ -30,11 +27,6 @@ module.exports = (knex) => {
     });
     res.status(201).send();
   });
-
-  //  // edit list item
-  //  router.post("/edit", (req, res) => {
-  //   console.log("Hello from todos PUT");
-  // });
 
   // move list item to new category
   router.post("/move", (req, res) => {

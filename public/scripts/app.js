@@ -1,14 +1,5 @@
-// // UNUSED helper object used when filtering inside of /todos GET
-// const categories = {
-//   buy: 1,
-//   read: 2,
-//   watch: 3,
-//   visit: 4
-// };
-
 // JQuery / AJAX functions
 $(() => {
-  
   //
   $.ajax({
     method: "GET",
@@ -28,27 +19,27 @@ $(() => {
   }).done(todos => {
     for (todo of todos) {
       if (todo.user_id === Number($("#user_id").html())) {
-        console.log(todo);
         var $newTodo;
-          $newTodo = $("<li>")
-            .text(todo.name)
-            .attr("id", "todo_" + todo.id)
-            .attr("class", "listItem")
-            .appendTo($(`#${todo.category_id} > .list`));
-        function getTodoID (element) {
+        $newTodo = $("<li>")
+          .text(todo.name)
+          .attr("id", "todo_" + todo.id)
+          .attr("class", "listItem")
+          .appendTo($(`#${todo.category_id} > .list`));
+        function getTodoID(element) {
           element.click(function() {
             selectedTodoID = element.attr("id").slice(5);
-            console.log("selectedTodoID set to:", selectedTodoID);
-                  $('#editForm').slideToggle("slow").css("visibility", "visible", "display", "block")
-              });
+            $("#editForm")
+              .slideToggle("slow")
+              .css("visibility", "visible", "display", "block");
+          });
+        }
+        getTodoID($newTodo);
+        $("<li>")
+          .text(todo.description)
+          .attr("class", "desc_li")
+          .appendTo($(`#${todo.category_id} > .list`));
       }
-      getTodoID($newTodo);
-      $("<li>")
-        .text(todo.description)
-        .attr("class", "desc_li")
-        .appendTo($(`#${todo.category_id} > .list`));
     }
-  }
   });
 
   //variable for tracking clicked todo ID
@@ -64,8 +55,7 @@ $(() => {
       email: event.target[3].value,
       username: event.target[2].value
       // password: event.target[4].value
-    }
-    console.log(editUserObj);
+    };
     $.ajax({
       method: "POST",
       url: "/users/edit",
@@ -73,10 +63,10 @@ $(() => {
       success: function() {
         location.reload();
       }
-    }).done(console.log("User sucessfully edited!"));
+    }).done(console.log("User sucessfully edited"));
   });
 
-  // helper function that gets data required to move a todo to a different list 
+  // helper function that gets data required to move a todo to a different list
   const makeMoveObj = function() {
     let moveObj = {};
     let radioButtons = document.getElementsByName("category");
@@ -91,21 +81,18 @@ $(() => {
     return moveObj;
   };
 
-
-
   // move todo form submission
   $("#move").on("click", function(event) {
     event.preventDefault();
     let moveObj = makeMoveObj();
-    console.log("This is moveObj inside form submit:", moveObj);
     $.ajax({
-        method: "POST",
-        url: "/todos/move",
-        data: moveObj,
-        success: function() {
-          location.reload();
-        }
-      }).done(console.log("Todo moved!"));
+      method: "POST",
+      url: "/todos/move",
+      data: moveObj,
+      success: function() {
+        location.reload();
+      }
+    }).done(console.log("Todo moved"));
   });
 
   // delete todo form submission
@@ -115,7 +102,7 @@ $(() => {
       method: "POST",
       url: "/todos/delete",
       data: {
-        id: selectedTodoID,
+        id: selectedTodoID
       },
       success: function() {
         location.reload();
@@ -143,7 +130,7 @@ $(() => {
     selectedCategory = 4;
   });
 
-  $('#category_choice').on("submit", function(event) {
+  $("#category_choice").on("submit", function(event) {
     event.preventDefault();
   });
 
@@ -162,9 +149,7 @@ $(() => {
         success: function() {
           location.reload();
         }
-      }).done(() => {
-        console.log("yay");
-      });
+      }).done(() => {});
     } else {
       alert("You must choose a category!");
     }

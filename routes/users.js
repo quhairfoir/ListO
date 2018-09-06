@@ -15,11 +15,6 @@ module.exports = (knex) => {
     });
   });
 
-  // register user
-  router.post("/", (req, res) => {
-    
-  });
-
   // edit user information
   router.post("/edit", (req, res) => {
     knex.transaction(function() {

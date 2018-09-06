@@ -1,23 +1,18 @@
-<body>
+<!-- views/partials/_header.ejs -->
+
     <h1>ListO</h1>
-     
+
     <button class='auth'>
-            <i class="fas fa-user"></i>
+        <i class="fas fa-user"></i>
     </button>
     <button class='auth'>
-            <i class="fas fa-cog"></i>
+        <i class="fas fa-cog"></i>
     </button>
 
     <form id="logout" method="POST" action="/auth"></form>
-        <button class='auth' type="submit" form="logout">
-                <i class="fas fa-sign-out-alt"></i>
-        </button>
+    <button class='auth' type="submit" form="logout">
+        <i class="fas fa-sign-out-alt"></i>
+    </button>
     <h3>Organising your life, one list at a time</h3>
 
-    <h2 id='user_name'>
-        <!-- <%= user.first_name %>'s Lists -->
-    </h2>
-
-       
-
-</body>
+    <h2 id='user_name'></h2>

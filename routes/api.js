@@ -11,13 +11,12 @@ const traktKey = secrets.TRAKT_KEY;
 // exports helper functions used by GET to "/api"
 module.exports = function makeAPIHelpers() {
   return {
-    
     toTrakt: function(query, cb) {
       let newEntry = {};
 
       const options = {
         method: "GET",
-        url: 'https://api.trakt.tv/search',
+        url: "https://api.trakt.tv/search",
         qs: { query, type: "movie,show" },
         headers: {
           "Cache-Control": "no-cache",
@@ -30,10 +29,10 @@ module.exports = function makeAPIHelpers() {
       request(options, function(error, response, body) {
         if (error) throw new Error(error);
         const res = JSON.parse(body);
-        console.log(res);
-        newEntry.name = res[0].show.title;
+        const data = res[0].show ? res[0].show : res[0].movie;
+        newEntry.name = data.title;
         newEntry.description =
-          res[0].type + ", " + res[0].show.overview.slice(0, 50) + "...";
+          res[0].type + ", " + data.overview.slice(0, 50) + "...";
         cb(error, newEntry);
       });
     },
@@ -51,11 +50,10 @@ module.exports = function makeAPIHelpers() {
       request(options, function(error, response, body) {
         if (error) throw new Error(error);
         const res = JSON.parse(body);
-        newEntry.name = res.businesses[0].name;
+        const data = res.businesses[0];
+        newEntry.name = data.name;
         newEntry.description =
-          res.businesses[0].categories[0].alias +
-          ", " +
-          res.businesses[0].location.display_address[0];
+          data.categories[0].alias + ", " + data.location.display_address[0];
         cb(error, newEntry);
       });
     },
@@ -74,13 +72,9 @@ module.exports = function makeAPIHelpers() {
         const res = JSON.parse(
           convert.xml2json(body, { compact: true, spaces: 4 })
         );
-        newEntry.name =
-          res.GoodreadsResponse.search.results.work[0].best_book.title._text +
-          ", by " +
-          res.GoodreadsResponse.search.results.work[0].best_book.author.name
-            ._text;
-        newEntry.description =
-          res.GoodreadsResponse.search.results.work[0].best_book._attributes.type;
+        const data = res.GoodreadsResponse.search.results.work[0].best_book;
+        newEntry.name = data.title._text + ", by " + data.author.name._text;
+        newEntry.description = data._attributes.type;
 
         cb(error, newEntry);
       });
