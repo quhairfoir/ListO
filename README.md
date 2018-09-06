@@ -3,10 +3,10 @@
 ListO is a full stack app that takes user queries and automatically generates list items by running input through Yelp, Trakt, and GoodReads APIs.
 
 ## Screenshots
-!["Screenshot of landing page"]()
-!["Screenshot of index"]()
-!["Screenshot of item edit"]()
-!["Screenshot of user edit"]()
+!["Screenshot of landing page"](https://github.com/quhairfoir/Smrt-TODO/blob/master/docs/login-page.png?raw=true)
+!["Screenshot of index"](https://github.com/quhairfoir/Smrt-TODO/blob/master/docs/index.png?raw=true)
+!["Screenshot of item edit"](https://github.com/quhairfoir/Smrt-TODO/blob/master/docs/item-edit.png?raw=true)
+!["Screenshot of user edit"](https://github.com/quhairfoir/Smrt-TODO/blob/master/docs/user-edit.png?raw=true)
 
 ## Getting Started
 
