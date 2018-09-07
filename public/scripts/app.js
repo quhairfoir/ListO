@@ -34,10 +34,13 @@ $(() => {
           });
         }
         getTodoID($newTodo);
-        $("<li>")
+        let $desc = $("<li>")
           .text(todo.description)
           .attr("class", "desc_li")
-          .appendTo($(`#${todo.category_id} > .list`));
+        let $descUL = $("<ul>")
+          .attr("class", "desc_ul")
+        $($descUL).append($desc)
+        $(`#${todo.category_id} > .list`).append($descUL)
       }
     }
   });
@@ -81,7 +84,7 @@ $(() => {
     return moveObj;
   };
 
-  // move todo form submission
+  // moves a todo list item
   $("#move").on("click", function(event) {
     event.preventDefault();
     let moveObj = makeMoveObj();
@@ -95,7 +98,7 @@ $(() => {
     }).done(console.log("Todo moved"));
   });
 
-  // delete todo form submission
+  // deletes a todo list item
   $("#delete").on("click", function(event) {
     event.preventDefault();
     $.ajax({

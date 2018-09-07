@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("i.fas.fa-user").click(function(){
+    $("#edit_user_button").click(function(){
         $('#editProfile').slideToggle("slow").css("visibility", "visible", "display", "block")
     });
 });

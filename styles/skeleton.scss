@@ -417,12 +417,33 @@ there.
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {}
 
-#logout-button {
+header button {
   float: right;
 }
 
 .edit {
   visibility: hidden;
   display: none;
+}
+
+#user_id {
+  visibility: hidden;
+  display: none;
+}
+
+h1 {
+  margin: 50px auto 50px auto;
+}
+
+header h5 {
+  float: right;
+}
+
+.lists .column {
+  background-color: #EEE;
+}
+
+.listItem:hover {
+  color: #33C3F0;
 }
 

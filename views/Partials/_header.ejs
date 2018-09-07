@@ -1,21 +1,23 @@
 <!-- views/partials/_header.ejs -->
 <!-- <div class="container"> -->
 <section class="header">
+        <h5>Organising your life, one list at a time</h5>
     <h1>SMRT</h1>
-
-    <button>
+    
+    <!-- <button id="edit_user_button">
         <i class="fas fa-user"></i>
-    </button>
-    <button>
+    </button> -->
+    <button id="edit_user_button">
         <i class="fas fa-cog"></i>
     </button>
+    
     <button id="logout-button" type="submit" form="logout">
         <i class="fas fa-sign-out-alt"></i>
     </button>
     <form id="logout" method="POST" action="/auth">
     </form>
-    <h3>Organising your life, one list at a time</h3>
+    
 
-    <h2 id='user_name'></h2>
+    <h4 id='user_name'></h4>
 </section>
 <!-- </div> -->
