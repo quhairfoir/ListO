@@ -1,18 +1,21 @@
 <!-- views/partials/_header.ejs -->
+<!-- <div class="container"> -->
+<section class="header">
+    <h1>SMRT</h1>
 
-    <h1>ListO</h1>
-
-    <button class='auth'>
+    <button>
         <i class="fas fa-user"></i>
     </button>
-    <button class='auth'>
+    <button>
         <i class="fas fa-cog"></i>
     </button>
-
-    <form id="logout" method="POST" action="/auth"></form>
-    <button class='auth' type="submit" form="logout">
+    <button id="logout-button" type="submit" form="logout">
         <i class="fas fa-sign-out-alt"></i>
     </button>
+    <form id="logout" method="POST" action="/auth">
+    </form>
     <h3>Organising your life, one list at a time</h3>
 
     <h2 id='user_name'></h2>
+</section>
+<!-- </div> -->

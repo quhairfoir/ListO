@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ListO - Home Page</title>
+    <title>SMRT Todo List - Home Page</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/normalize.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/skeleton.css" type="text/css" />
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <!-- <link rel="stylesheet" href="/bower_components/Skeleton-Sass/css/skeleton.css/" type="text/css" />     -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     
     <link href="https://fonts.googleapis.com/css?family=Arimo|Oxygen:400,700" rel="stylesheet">
@@ -16,6 +19,7 @@
   </head>
   
   <body>
+    <div class="container">
     <div id="user_id"> <%= user.id %> </div>
     <header>
         <% include ./partials/_header %>
@@ -40,31 +44,38 @@
     </button>
     <section class="input">
       <form id="category_choice">
-        <textarea id="queryText" name="text" placeholder="What do you need to do..?"></textarea>
+        <div class="row">
+        <textarea id="queryText" class="u-full-width" name="text" placeholder="What do you need to do..?"></textarea>
         <button class="checkSubmit"><i id="Submit" class="fas fa-check"></i></button>
+        </div>
       </form>
     </section>
     
     <% include ./edit_form %>
-    <article class="list">
+
+    <div class="container">
+    <div class="row">
+      <div class ="three columns">
       <% let category= "1"; %>
       <% include ./partials/_lists %>
-    </article>
+    </div>
 
-    <article class="list">
+    <div class ="three columns">
       <% category= "2"; %>
       <% include ./partials/_lists %>
-    </article>
+    </div>
 
-    <article class="list">
+    <div class ="three columns">
       <% category= "3"; %>
       <% include ./partials/_lists %>
-    </article>
+    </div>
     
-    <article class="list">
+    <div class ="three columns">
       <% category= "4"; %>
       <% include ./partials/_lists %>
-    </article>
-    
+    </div>
+  </div>
+  </div>
+  </div>
   </body>
 </html>
